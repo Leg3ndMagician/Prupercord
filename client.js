@@ -60,7 +60,7 @@ const Message = {
             switch (message.type) {
                 case "Message":
                     var date = new Date();
-                    var time = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds();
+                    var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
                     log("[" + message.data.sender + "] (" + time + ") " + message.data.content);
                     break;
                 default:
