@@ -59,7 +59,9 @@ const Message = {
             var message = JSON.parse(toInterpret);
             switch (message.type) {
                 case "Message":
-                    log("[" + message.data.sender + "] " + message.data.content);
+                    var date = new Date();
+                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    log("[" + message.data.sender + "] (" + time + ") " + message.data.content);
                     break;
                 default:
                     console.error("Could not interpret message: " + message);
