@@ -59,6 +59,7 @@ const Message = {
             var message = JSON.parse(toInterpret);
             switch (message.type) {
                 case "Message":
+                    
                     var date = new Date();
                     var hours = date.getHours();
                     var daytime = "AM";
@@ -67,7 +68,14 @@ const Message = {
                         daytime = "PM";
                     }
                     var time = hours + ":" + date.getMinutes() + " " + daytime;
-                    log("[" + message.data.sender + "] (" + time + ") " + message.data.content);
+                    
+                    
+                    var mess = message.data.content;
+                    while (mess.indexOf(":thumbsup:") > -1) {
+                        mess = mess.substring(0, mess.indexOf(":thumbsup:")) + "👍" + mess.substring(mess.indexOf(":thumbsup:") + 10);
+                    }
+                    
+                    log("[" + message.data.sender + "] (" + time + ") " + mess);
                     break;
                 default:
                     console.error("Could not interpret message: " + message);
