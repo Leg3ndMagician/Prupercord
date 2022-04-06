@@ -84,7 +84,7 @@ const Message = {
                     while (mess.indexOf(":poop:") > -1) {
                         mess = mess.substring(0, mess.indexOf(":poop:")) + "💩" + mess.substring(mess.indexOf(":poop:") + 6);
                     }
-                    while (mess.indexOf(":poop:") > -1) {
+                    while (mess.indexOf(":moyai:") > -1) {
                         mess = mess.substring(0, mess.indexOf(":moyai:")) + "🗿" + mess.substring(mess.indexOf(":moyai:") + 7);
                     }
                     if (mess == "/astley" || mess == "/rickroll") {
