@@ -110,6 +110,18 @@ const EmojiList = [
     { identifier: ":poop:", emoji: "💩" },
     { identifier: ":eggplant:", emoji: "🍆" },
     { identifier: ":rofl:", emoji: "🤣" },
+    { identifier: ":heart:", emoji: "❤️" },
+    { identifier: ":pray:", emoji: "🙏" },
+    { identifier: ":cry:", emoji: "😭" },
+    { identifier: ":okhand:", emoji: "👌" },
+    { identifier: ":facepalm:", emoji: "🤦" },
+    { identifier: ":shrug:", emoji: "🤷" },
+    { identifier: ":eyes:", emoji: "👀" },
+    { identifier: ":boom:", emoji: "💥" },
+    { identifier: ":flushed:", emoji: "😳" },
+    { identifier: ":sleeping:", emoji: "😴" },
+    { identifier: ":grimacing:", emoji: "😬" },
+    { identifier: ":exclamation:", emoji: "❗" },
     { identifier: ":tm:", emoji: "™" }
 ]
 
