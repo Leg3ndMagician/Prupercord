@@ -109,6 +109,7 @@ const EmojiList = [
     { identifier: ":crying:", emoji: "😢" },
     { identifier: ":poop:", emoji: "💩" },
     { identifier: ":eggplant:", emoji: "🍆" },
+    { identifier: ":rofl:", emoji: "🤣" },
     { identifier: ":tm:", emoji: "™" }
 ]
 
