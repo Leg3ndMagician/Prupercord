@@ -80,7 +80,10 @@ const Message = {
                     while (mess.indexOf(":poop:") > -1) {
                         mess = mess.substring(0, mess.indexOf(":poop:")) + "💩" + mess.substring(mess.indexOf(":poop:") + 6);
                     }
-            
+                    if (mess === "/astley" || mess == "/rickroll") {
+                        mess = "<img src="https://c.tenor.com/VFFJ8Ei3C2IAAAAM/rickroll-rick.gif"></img>";
+                    }
+                    
                     log("[" + message.data.sender + "] (" + time + ") " + mess + "");
                     break;
                 default:
