@@ -37,7 +37,7 @@ window.onload = function () {
             commandParser(text);
         } else {
             // message
-            connection.send(Message.new("Message", { sender: username, content: text, timestamp: Date.now() }));
+            connection.send(Message.new("Message", { sender: username, content: text, timestamp: null }));
         }
         document.getElementById("inputMessage").value = "";
     };
@@ -91,7 +91,8 @@ function commandParser(command) {
     switch (command) {
         case "/astley":
         case "/rickroll":
-            connection.send(Message.new("Message", { sender: username, content: "<img src=\"https://c.tenor.com/VFFJ8Ei3C2IAAAAM/rickroll-rick.gif\"></img>" }));
+        case "/banme":
+            connection.send(Message.new("Message", { sender: username, content: "<img src=\"https://c.tenor.com/VFFJ8Ei3C2IAAAAM/rickroll-rick.gif\"></img>", timestamp: Date.now() }));
             break;
         default:
             log("\nUnknown command.\n")
