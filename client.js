@@ -75,7 +75,7 @@ const Message = {
                         mess = mess.substring(0, mess.indexOf(":thumbsup:")) + "👍" + mess.substring(mess.indexOf(":thumbsup:") + 10);
                     }
             
-                    log("[" + message.data.sender + "] (" + time + ") " + mess + "(also prupercord is cooler than snowstorm)");
+                    log("[" + message.data.sender + "] (" + time + ") " + mess + "");
                     break;
                 default:
                     console.error("Could not interpret message: " + message);
