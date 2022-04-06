@@ -70,13 +70,12 @@ const Message = {
                     var time = hours + ":" + date.getMinutes() + " " + daytime;
                     
                     
-                    //var mess = message.data.content;
-                    //while (mess.indexOf(":thumbsup:") > -1) {
-                    //    mess = mess.substring(0, mess.indexOf(":thumbsup:")) + "👍" + mess.substring(mess.indexOf(":thumbsup:") + 10);
-                    //}
-                    
-                    //log("[" + message.data.sender + "] (" + time + ") " + mess);
-                    log("urmom");
+                    var mess = message.data.content;
+                    while (mess.indexOf(":thumbsup:") > -1) {
+                        mess = mess.substring(0, mess.indexOf(":thumbsup:")) + "👍" + mess.substring(mess.indexOf(":thumbsup:") + 10);
+                    }
+            
+                    log("[" + message.data.sender + "] (" + time + ") " + mess + "(also prupercord is cooler than snowstorm)");
                     break;
                 default:
                     console.error("Could not interpret message: " + message);
