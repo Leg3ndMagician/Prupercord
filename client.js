@@ -102,8 +102,14 @@ function commandParser(command) {
 const EmojiList = [
     { identifier: ":moyai:", emoji: "🗿" },
     { identifier: ":thumbsup:", emoji: "👍" },
-    { identifier: ":tm:", emoji: "™" },
-    { identifier: ":poop:", emoji: "💩" }
+    { identifier: ":thumbsdown:", emoji: "👎" },
+    { identifier: ":sunglasses:", emoji: "😎" },
+    { identifier: ":expressionless:", emoji: "😑" },
+    { identifier: ":pensive:", emoji: "😔" },
+    { identifier: ":crying:", emoji: "😢" },
+    { identifier: ":poop:", emoji: "💩" },
+    { identifier: ":eggplant:", emoji: "🍆" },
+    { identifier: ":tm:", emoji: "™" }
 ]
 
 function parseEmoji(text) {
