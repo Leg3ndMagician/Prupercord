@@ -62,12 +62,16 @@ const Message = {
                     
                     var date = new Date();
                     var hours = date.getHours();
+                    var minutes = date.getMinutes();
                     var daytime = "AM";
                     if (hours > 12) {
                         hours -= 12;
                         daytime = "PM";
                     }
-                    var time = hours + ":" + date.getMinutes() + " " + daytime;
+                    if (minutes < 10) {
+                        minutes = "0" + minutes;
+                    }
+                    var time = hours + ":" + minutes + " " + daytime;
                     
                     
                     var mess = message.data.content;
