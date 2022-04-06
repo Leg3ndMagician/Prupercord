@@ -74,6 +74,12 @@ const Message = {
                     while (mess.indexOf(":thumbsup:") > -1) {
                         mess = mess.substring(0, mess.indexOf(":thumbsup:")) + "👍" + mess.substring(mess.indexOf(":thumbsup:") + 10);
                     }
+                    while (mess.indexOf(":tm:") > -1) {
+                        mess = mess.substring(0, mess.indexOf(":tm:")) + "™" + mess.substring(mess.indexOf(":tm:") + 4);
+                    }
+                    while (mess.indexOf(":poop:") > -1) {
+                        mess = mess.substring(0, mess.indexOf(":poop:")) + "💩" + mess.substring(mess.indexOf(":poop:") + 6);
+                    }
             
                     log("[" + message.data.sender + "] (" + time + ") " + mess + "");
                     break;
