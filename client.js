@@ -11,6 +11,7 @@ let username = "Client " + Math.floor(Math.random() * 1000000);
 
 connection.onopen = function () {
     log("Connected!");
+    log("Tip: Use <b>/help</b> for information on commands.", Date.now(), 'lightblue');
     usernamePrompt = prompt("Connected to the server. Please enter a username.");
     if (usernamePrompt != "" && usernamePrompt != null) username = usernamePrompt;
     document.getElementById("inputName").value = username;
@@ -70,13 +71,17 @@ const Message = {
             switch (message.type) {
                 case "Message":
                     var messageContent = parseEmoji(message.data.content);
-                    log("[" + message.data.sender + "] (" + getTimeFor(message.data.timestamp) + ") " + messageContent + "");
+                    log("" + message.data.sender + ": " + messageContent, message.data.timestamp);
+                    break;
+                case "Image":
+                    var image = "<img src=\"" + message.data.url + "\">";
+                    log("" + message.data.sender + ": " + image, message.data.timestamp);
                     break;
                 case "UserJoin":
-                    log("\n" + message.data.name + " has entered the chat (" + message.data.newUserCount + " now online)\n");
+                    log("" + message.data.name + " has entered the chat (" + message.data.newUserCount + " online)", message.data.timestamp, 'lightgreen');
                     break;
                 case "UserLeave":
-                    log("\n" + message.data.name + " has left the chat (" + message.data.newUserCount + " now online)\n");
+                    log("" + message.data.name + " has left the chat (" + message.data.newUserCount + " online)", message.data.timestamp, 'pink');
                     break;
                 default:
                     console.error("Could not interpret message: " + message);
@@ -87,48 +92,88 @@ const Message = {
     }
 }
 
+const CommandList = [
+    { name: 'emoji', aliases: ['emojilist', 'el'], description: "Shows a list of emojis." },
+    { name: 'rickroll', aliases: ['rickroll', 'banme'], description: "You know the rules, and so do I." },
+    { name: 'sendimage {url}', aliases: ['image','img'], description: "Sends an image with a given url." },
+    { name: 'help', aliases: ['commandlist','cl'], description: "Shows the command list." },
+]
+
 function commandParser(command) {
-    switch (command) {
-        case "/astley":
+    var commandArguments = command.split(' ');
+    var commandId = commandArguments.shift();
+
+    switch (commandId) {
+        case "/emoji":
+        case "/emojilist":
+        case "/el":
+            var listText = "List of Emojis: <br>";
+            for (i in EmojiList) {
+                listText += "<br>" + EmojiList[i].emoji + " - " + EmojiList[i].identifier + "";
+            }
+            log(listText, Date.now(), 'lightblue')
+            break;
         case "/rickroll":
+        case "/astley":
         case "/banme":
-            connection.send(Message.new("Message", { sender: username, content: "<img src=\"https://c.tenor.com/VFFJ8Ei3C2IAAAAM/rickroll-rick.gif\"></img>", timestamp: Date.now() }));
+            connection.send(Message.new("Image", { sender: username, url: "https://c.tenor.com/VFFJ8Ei3C2IAAAAM/rickroll-rick.gif", timestamp: null }));
+            break;
+        case "/sendimage":
+        case "/image":
+        case "/img":
+            if (commandArguments[0]) {
+                connection.send(Message.new("Image", { sender: username, url: commandArguments[0], timestamp: null }));
+            } else {
+                log("Please enter in a URL to send an image for.", Date.now(), 'lightblue');
+            }
+            break;
+        case "/help":
+        case "/commandlist":
+        case "/cl":
+            var listText = "List of Commands: <br>"
+            for (i in CommandList) {
+                listText += "<br><b>/" + CommandList[i].name + "</b> - " + CommandList[i].description + "";
+            }
+            log(listText, Date.now(), 'lightblue')
             break;
         default:
-            log("\nUnknown command.\n")
+            log("Unknown command.", Date.now(), 'lightblue');
     }
 }
 
 const EmojiList = [
-    { identifier: ":moyai:", emoji: "🗿" },
-    { identifier: ":thumbsup:", emoji: "👍" },
-    { identifier: ":thumbsdown:", emoji: "👎" },
-    { identifier: ":sunglasses:", emoji: "😎" },
-    { identifier: ":expressionless:", emoji: "😑" },
-    { identifier: ":pensive:", emoji: "😔" },
-    { identifier: ":crying:", emoji: "😢" },
-    { identifier: ":poop:", emoji: "💩" },
-    { identifier: ":eggplant:", emoji: "🍆" },
-    { identifier: ":rofl:", emoji: "🤣" },
-    { identifier: ":heart:", emoji: "❤️" },
-    { identifier: ":pray:", emoji: "🙏" },
-    { identifier: ":cry:", emoji: "😭" },
-    { identifier: ":okhand:", emoji: "👌" },
-    { identifier: ":facepalm:", emoji: "🤦" },
-    { identifier: ":shrug:", emoji: "🤷" },
-    { identifier: ":eyes:", emoji: "👀" },
-    { identifier: ":boom:", emoji: "💥" },
-    { identifier: ":flushed:", emoji: "😳" },
-    { identifier: ":sleeping:", emoji: "😴" },
-    { identifier: ":grimacing:", emoji: "😬" },
-    { identifier: ":exclamation:", emoji: "❗" },
-    { identifier: ":tm:", emoji: "™" }
+    { identifier: ':boom:', emoji: '💥' },
+    { identifier: ':cry:', emoji: '😭' },
+    { identifier: ':crying:', emoji: '😢' },
+    { identifier: ':eggplant:', emoji: '🍆' },
+    { identifier: ':exclamation:', emoji: '❗' },
+    { identifier: ':expressionless:', emoji: '😑' },
+    { identifier: ':eyes:', emoji: '👀' },
+    { identifier: ':facepalm:', emoji: '🤦' },
+    { identifier: ':flushed:', emoji: '😳' },
+    { identifier: ':grimacing:', emoji: '😬' },
+    { identifier: ':heart:', emoji: '❤️' },
+    { identifier: ':joy:', emoji: '😂' },
+    { identifier: ':moyai:', emoji: '🗿' },
+    { identifier: ':okhand:', emoji: '👌' },
+    { identifier: ':pensive:', emoji: '😔' },
+    { identifier: ':poop:', emoji: '💩' },
+    { identifier: ':pray:', emoji: '🙏' },
+    { identifier: ':rofl:', emoji: '🤣' },
+    { identifier: ':shrug:', emoji: '🤷' },
+    { identifier: ':sleeping:', emoji: '😴' },
+    { identifier: ':smile:', emoji: '😀' },
+    { identifier: ':sunglasses:', emoji: '😎' },
+    { identifier: ':sweat:', emoji: '😰' },
+    { identifier: ':thumbsdown:', emoji: '👎' },
+    { identifier: ':thumbsup:', emoji: '👍' },
+    { identifier: ':tm:', emoji: '™' }
 ]
 
 function parseEmoji(text) {
     var parsedText = text;
     for (i = 0; i < EmojiList.length; i++) {
-        parsedText = parsedText.replace(EmojiList[i].identifier, EmojiList[i].emoji);
+        parsedText = parsedText.replaceAll(EmojiList[i].identifier, EmojiList[i].emoji);
     }
     return parsedText;
 }
@@ -143,12 +188,12 @@ function getTimeFor(timestamp) {
         daytime = "PM";
     }
 
-    var time = hours + ":" + minutes.toString().padStart(2, '0') + daytime;
+    var time = hours + ":" + minutes.toString().padStart(2, '0') + " " + daytime;
     return time;
 }
 
-function log(info) {
+function log(info, timestamp = Date.now(), color = 'lightgray') {
     element = document.getElementById('messages')
-    element.innerHTML += "<p>" + info + "</p>";
+    element.innerHTML += "<div style=\"padding:10px; margin:10px; border:3px solid black; border-radius:5px; background-color:" + color + "\">" + info + "<span style=\"float:right;\">" + getTimeFor(timestamp) + "</span><div>";
     element.scrollTop = element.scrollHeight;
 }

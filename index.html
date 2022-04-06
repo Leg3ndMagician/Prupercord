@@ -6,17 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
     <script src="client.js"></script>
+    <style>
+        html {
+            font-family: Arial;
+        }
+
+        image, img {
+            border: 3px solid black;
+        }
+    </style>
 </head>
 
 <body>
+    <h1 style="text-align:center;">Prupercord v0.2</h1>
 
-    <input type="text" id="inputName" placeholder="Client" disabled="true">
+    <div id="messages" style="height:500px; background-color:#F7F7F7; border:3px solid black; border-radius:5px; overflow-y:scroll;"></div>
+
+    <div id="interfaceElements" style="margin-top:25px; text-align:center;">
+        <input type="text" id="inputName" maxlength="100" placeholder="Client" disabled="true">
     <pre id="output"></pre>
 
-    <input type="text" id="inputMessage" placeholder="Message"><button id="sendButton">Send</button>
+    <input type="text" id="inputMessage" placeholder="Message"><span> </span><button id="sendButton">SEND</button>
     <pre id="output"></pre>
-
-    <div id="messages" style="height:500px;overflow:scroll;">
     </div>
 
 </body>
