@@ -110,6 +110,7 @@ function parseEmoji(text) {
     for (i = 0; i < EmojiList.length; i++) {
         parsedText = parsedText.replace(EmojiList[i].identifier, EmojiList[i].emoji);
     }
+    return parsedText;
 }
 
 function getTimeFor(timestamp) {
