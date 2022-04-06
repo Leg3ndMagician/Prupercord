@@ -60,7 +60,13 @@ const Message = {
             switch (message.type) {
                 case "Message":
                     var date = new Date();
-                    var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                    var hours = date.getHours();
+                    var daytime = "AM";
+                    if (hours > 12) {
+                        hours -= 12;
+                        daytime = "PM";
+                    }
+                    var time = hours + ":" + date.getMinutes() + " " + daytime;
                     log("[" + message.data.sender + "] (" + time + ") " + message.data.content);
                     break;
                 default:
