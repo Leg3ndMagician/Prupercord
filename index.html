@@ -7,11 +7,14 @@
     <title>Prupercord</title>
     <script src="client.js"></script>
     <style>
-        html {
+        html,
+        body {
             font-family: Arial;
+            height: 100%;
         }
 
-        image, img {
+        image,
+        img {
             border: 3px solid black;
         }
     </style>
@@ -20,14 +23,16 @@
 <body>
     <h1 style="text-align:center;">Prupercord v0.2</h1>
 
-    <div id="messages" style="height:500px; background-color:#F7F7F7; border:3px solid black; border-radius:5px; overflow-y:scroll;"></div>
+    <div id="messages"
+        style="height:60%; background-color:#F7F7F7; border:3px solid black; border-radius:5px; overflow-y:scroll;">
+    </div>
 
     <div id="interfaceElements" style="margin-top:25px; text-align:center;">
         <input type="text" id="inputName" maxlength="100" placeholder="Client" disabled="true">
-    <pre id="output"></pre>
+        <pre id="output"></pre>
 
-    <input type="text" id="inputMessage" placeholder="Message"><span> </span><button id="sendButton">SEND</button>
-    <pre id="output"></pre>
+        <input type="text" id="inputMessage" placeholder="Message"><span> </span><button id="sendButton">SEND</button>
+        <pre id="output"></pre>
     </div>
 
 </body>
