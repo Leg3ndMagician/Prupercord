@@ -2,7 +2,7 @@
 CREDITS:
 
 Pruper - Head Developer
-Broman - Developer
+Broman - The Cooler Developer 😎
 
 */
 let connection = new WebSocket('wss://Prupercord.leg3ndmagician.repl.co', "this-is-probably-a-protocol");
@@ -94,7 +94,7 @@ const Message = {
 
 const CommandList = [
     { name: 'emoji', aliases: ['emojilist', 'el'], description: "Shows a list of emojis." },
-    { name: 'rickroll', aliases: ['rickroll', 'banme'], description: "You know the rules, and so do I." },
+    { name: 'rickroll', aliases: ['astley', 'banme'], description: "You know the rules, and so do I." },
     { name: 'sendimage {url}', aliases: ['image','img'], description: "Sends an image with a given url." },
     { name: 'help', aliases: ['commandlist','cl'], description: "Shows the command list." },
 ]
@@ -143,18 +143,22 @@ function commandParser(command) {
 
 const EmojiList = [
     { identifier: ':boom:', emoji: '💥' },
+    { identifier: ':brain:', emoji: '🧠' },
     { identifier: ':cry:', emoji: '😭' },
     { identifier: ':crying:', emoji: '😢' },
     { identifier: ':eggplant:', emoji: '🍆' },
     { identifier: ':exclamation:', emoji: '❗' },
     { identifier: ':expressionless:', emoji: '😑' },
+    { identifier: ':eye:', emoji: '👁️' },
     { identifier: ':eyes:', emoji: '👀' },
     { identifier: ':facepalm:', emoji: '🤦' },
     { identifier: ':flushed:', emoji: '😳' },
     { identifier: ':grimacing:', emoji: '😬' },
     { identifier: ':heart:', emoji: '❤️' },
     { identifier: ':joy:', emoji: '😂' },
+    { identifier: ':mouth:', emoji: 👄' },
     { identifier: ':moyai:', emoji: '🗿' },
+    { identifier: ':muscle:', emoji: '💪' },
     { identifier: ':okhand:', emoji: '👌' },
     { identifier: ':pensive:', emoji: '😔' },
     { identifier: ':poop:', emoji: '💩' },
@@ -186,6 +190,8 @@ function getTimeFor(timestamp) {
     if (hours > 12) {
         hours -= 12;
         daytime = "PM";
+    } else if (hours == 0) {
+        hours += 12;
     }
 
     var time = hours + ":" + minutes.toString().padStart(2, '0') + " " + daytime;
