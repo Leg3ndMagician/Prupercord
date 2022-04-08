@@ -5,7 +5,7 @@ Pruper - Head Developer
 Broman - The Cooler Developer 😎
 
 */
-let connection = new WebSocket('wss://Prupercord.leg3ndmagician.repl.co', "this-is-probably-a-protocol");le
+let connection = new WebSocket('wss://Prupercord.leg3ndmagician.repl.co', "this-is-probably-a-protocol");
 
 let username = "Client " + Math.floor(Math.random() * 1000000);
 
