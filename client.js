@@ -71,6 +71,7 @@ const Message = {
             switch (message.type) {
                 case "Message":
                     var messageContent = parseEmoji(message.data.content);
+                    messageContent = parseTextStyling(messageContent);
                     log("" + message.data.sender + ": " + messageContent, message.data.timestamp);
                     break;
                 case "Image":
