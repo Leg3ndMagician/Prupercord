@@ -5,7 +5,7 @@ Pruper - Head Developer
 Broman - The Cooler Developer 😎
 
 */
-let connection = new WebSocket('wss://Prupercord.leg3ndmagician.repl.co', "this-is-probably-a-protocol");
+let connection = new WebSocket('wss://Prupercord.leg3ndmagician.repl.co', "this-is-probably-a-protocol");le
 
 let username = "Client " + Math.floor(Math.random() * 1000000);
 
@@ -185,7 +185,7 @@ function parseEmoji(text) {
 
 function parseTextStyling(text) {
     var parsedText = " " + text + " ";
-    while ((parsedText.split("**").length > 2) {
+    while (parsedText.split("**").length > 2) {
         var start = parsedText.indexOf("**");
         parsedText = parsedText.substring(0, start) + (start + 2);
         var end = parsedText.indexOf("**");
