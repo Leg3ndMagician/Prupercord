@@ -192,8 +192,8 @@ function parseTextStyling(text) {
         parsedText = parsedText.substring(0, start) + "<b>" + parsedText.substring(start, end) + "</b>" + parsedText.substring(end + 2);
         
     }
-    parsedText = parsedText.substring(1, parsedText.length() - 1);
-    return parsedText;
+    parsedText = parsedText.substring(1, parsedText.length - 1);
+    return parsedText + parsedText.split("**").length;
 }
 
 function getTimeFor(timestamp) {
