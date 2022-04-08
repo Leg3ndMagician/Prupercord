@@ -156,7 +156,7 @@ const EmojiList = [
     { identifier: ':grimacing:', emoji: '😬' },
     { identifier: ':heart:', emoji: '❤️' },
     { identifier: ':joy:', emoji: '😂' },
-    { identifier: ':mouth:', emoji: 👄' },
+    { identifier: ':mouth:', emoji: '👄' },
     { identifier: ':moyai:', emoji: '🗿' },
     { identifier: ':muscle:', emoji: '💪' },
     { identifier: ':okhand:', emoji: '👌' },
