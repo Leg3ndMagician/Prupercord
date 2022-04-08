@@ -182,6 +182,18 @@ function parseEmoji(text) {
     return parsedText;
 }
 
+function parseTextStyling(text) {
+    var parsedText = text;
+    while ((parsedText.split("**").length > 2) {
+        var start = parsedText.indexOf("**");
+        parsedText = parsedText.substring(0, start) + (start + 2);
+        var end = parsedText.indexOf("**");
+        parsedText = parsedText.substring(0, start) + "<b>" + parsedText.substring(start, end) + "</b>" + parsedText.substring(end + 2);
+        
+    }
+    return parsedText;
+}
+
 function getTimeFor(timestamp) {
     var date = new Date(timestamp);
     var hours = date.getHours();
