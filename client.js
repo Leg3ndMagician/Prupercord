@@ -2,7 +2,7 @@
 CREDITS:
 
 Pruper - Head Developer
-Broman - The Cooler Developer 😎
+Broman - The Drooler Developer 🤤
 
 */
 let connection = new WebSocket('wss://Prupercord.leg3ndmagician.repl.co', "this-is-probably-a-protocol");
@@ -184,7 +184,9 @@ function parseEmoji(text) {
 }
 
 function parseTextStyling(text) {
+    /*
     var parsedText = " " + text + " ";
+    
     while (parsedText.split("**").length > 2) {
         var start = parsedText.indexOf("**");
         parsedText = parsedText.substring(0, start) + (start + 2);
@@ -194,6 +196,8 @@ function parseTextStyling(text) {
     }
     parsedText = parsedText.substring(1, parsedText.length - 1);
     return parsedText + parsedText.split("**").length;
+    */
+    return text;
 }
 
 function getTimeFor(timestamp) {
