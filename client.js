@@ -184,7 +184,7 @@ function parseEmoji(text) {
 }
 
 function parseTextStyling(text) {
-    var parsedText = text;
+    var parsedText = " " + text + " ";
     while ((parsedText.split("**").length > 2) {
         var start = parsedText.indexOf("**");
         parsedText = parsedText.substring(0, start) + (start + 2);
@@ -192,6 +192,7 @@ function parseTextStyling(text) {
         parsedText = parsedText.substring(0, start) + "<b>" + parsedText.substring(start, end) + "</b>" + parsedText.substring(end + 2);
         
     }
+    parsedText = parsedText.substring(1, parsedText.length() - 1);
     return parsedText;
 }
 
